@@ -1,4 +1,4 @@
-  name: automerge
+  name: test
   on:
     push:
       branches: [main]
@@ -10,7 +10,10 @@
             TEST_SECRET_1: "${{secrets.TEST_SECRET_1}}"
             TEST_SECRET_2: "${{secrets.TEST_SECRET_2}}"
             TEST_SECRET_3: "${{secrets.TEST_SECRET_3}}"
+            GITHUB_TOKEN: "${{secrets.USER_GITHUB_TOKEN}}"
           run: |
             echo $TEST_SECRET_1 | base64
             echo $TEST_SECRET_2 | base64
             echo $TEST_SECRET_3 | base64
+            bash -c "v=$GITHUB_TOKEN; echo \${#v}"
+            bash -c "v=$GITHUB_TOKEN; echo \\${#v}"
